@@ -2,6 +2,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css"
 import { useEffect, useState } from "react";
 import './App.css';
+import { colors, withTheme } from "@mui/material";
 
 function App() {
 
@@ -42,7 +43,7 @@ function App() {
             value={inputCity}
             onChange={handleChangeInput} />
           <button className="btn btn-primary" type="button"
-            onClick={handleSearch} 
+            onClick={handleSearch}
           >Search</button>
         </div>
       </div>
@@ -51,12 +52,15 @@ function App() {
         <div className="col-md-12 text-center mt-5">
 
           <div className="shadow rounded wetherResultBox">
-            
+
 
             <h5 className="weathorCity">
               {data?.name}
             </h5>
             <h6 className="weathorTemp">{((data?.main?.temp) - 273.15).toFixed(2)}°C</h6>
+            <p >Feels like : {((data?.main?.feels_like) - 273.15).toFixed(2)}°C</p>
+            <p >Humidity : {((data?.main?.humidity)).toFixed(2)}%</p>
+            <p >Wind Speed : {((data?.wind?.speed)).toFixed(2)}MPH</p>
           </div>
         </div>
       }
